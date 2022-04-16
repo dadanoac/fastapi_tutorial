@@ -1,0 +1,4 @@
+found query: qstring
+message to mail@mail.com
+message to mail@mail.com
+message to mail@mail.com
