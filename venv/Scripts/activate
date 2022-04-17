@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\john\Desktop\개발스터디\fastapi_tutorial\venv"
+VIRTUAL_ENV="C:\Users\john\Desktop\dev_study\fastapi_tutorial\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

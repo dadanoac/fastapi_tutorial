@@ -1,0 +1,45 @@
+from fastapi import FastAPI, Body, Request
+from pydantic import HttpUrl
+from lib.telegram import Telegram
+from app.config import settings
+from app import models
+from lib import schema
+from devtools import debug
+
+app = FastAPI()
+telegram = Telegram(settings.TELEGRAM_BOT_TOKEN)
+
+
+@app.on_event("startup")
+def on_startup():
+    from app.database import engine
+
+    models.Base.metadata.create_all(bind=engine)
+
+
+@app.get("/")
+async def hello():
+    return b"hello World!"
+
+
+@app.post("/")
+async def webhook(request: Request):
+    r = await request.json()
+    r = schema.Update.parse_obj(r)
+    debug(r)
+    return 'OK'
+
+
+@app.get("/me")
+async def get_me():
+    return await telegram.get_bot_into()
+
+
+@app.get("/wb")
+async def get_webhook():
+    return await telegram.get_webhook()
+
+
+@app.post("/wb")
+async def set_webhook(url: HttpUrl = Body(..., embed=True)):
+    return await telegram.set_webhook(url)

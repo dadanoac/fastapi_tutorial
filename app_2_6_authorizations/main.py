@@ -1,4 +1,4 @@
-#OAuth2
+# OAuth2
 
 from datetime import datetime, timedelta
 from typing import Optional
@@ -61,7 +61,7 @@ async def get_user(cred: HTTPAuthorizationCredentials = Depends(security)):
 @app.post("/login")
 async def issue_token(data: OAuth2PasswordRequestForm = Depends()):
     user = fake_user_db[data.username]
-
+    print(data.password.encode(), user["password"].encode())
     if bcrypt.checkpw(data.password.encode(), user["password"].encode()):
         return await create_access_token(user, exp=timedelta(minutes=30))
     raise HTTPException(401)
