@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     TELEGRAM_BOT_TOKEN: SecretStr
 
     class Config:
-        env_file = ".env"
+        env_file = "fastapi_quizbot/.env"
         env_file_encoding = "utf-8"
 
 

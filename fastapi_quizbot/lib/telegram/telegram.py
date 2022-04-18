@@ -27,7 +27,7 @@ class Telegram:
         return r.json()
 
     async def get_webhook(self):
-        r = await self.cleient.get("getWebhookInfo")
+        r = await self.client.get("getWebhookInfo")
         return r.json()
 
     async def set_webhook(self, url: str):
