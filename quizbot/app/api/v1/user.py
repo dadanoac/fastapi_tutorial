@@ -2,8 +2,8 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm.session import Session
 
-from fastapi_quizbot import models, schemas
-from fastapi_quizbot.database import get_db
+from app import models, schemas
+from app.database import get_db
 
 router = APIRouter()
 

@@ -19,7 +19,7 @@ class ChatType(str, Enum):
 # models
 # -----------------------------------------------------------------------------
 class User(BaseModel):
-    id: int
+    id: str
     is_bot: bool
     first_name: str
     last_name: str
